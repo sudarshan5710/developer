@@ -201,3 +201,136 @@ body {
 /* palette picker removed */
 
 
+
+
+/* Add title hover effects */
+.title {
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.15;
+  margin: 0 0 12px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.title:hover {
+  color: var(--primary);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+  margin: 0 0 18px;
+  font-size: clamp(22px, 3.6vw, 28px);
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.section-title:hover {
+  color: var(--secondary);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-visual { position: relative; min-height: 320px; display: grid; place-items: center; }
+
+/* React Logo Animation */
+.react-logo {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  animation: react-rotate 12s linear infinite;
+}
+
+.react-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid var(--secondary);
+  border-radius: 50%;
+  animation: react-pulse 4s ease-in-out infinite;
+}
+
+.react-ring::before,
+.react-ring::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid var(--primary);
+  border-radius: 50%;
+  animation: react-orbit 8s linear infinite;
+}
+
+.react-ring::before {
+  transform: rotate(60deg);
+  animation-delay: -2.6s;
+}
+
+.react-ring::after {
+  transform: rotate(-60deg);
+  animation-delay: -5.3s;
+}
+
+.react-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--cyan), 0 0 40px color-mix(in oklab, var(--cyan) 50%, transparent);
+  animation: react-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes react-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes react-orbit {
+  0%, 100% { 
+    transform: rotate(60deg) scale(1);
+    opacity: 0.8;
+  }
+  50% { 
+    transform: rotate(60deg) scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes react-pulse {
+  0%, 100% { 
+    border-color: var(--secondary);
+    box-shadow: 0 0 20px color-mix(in oklab, var(--secondary) 30%, transparent);
+  }
+  50% { 
+    border-color: var(--primary);
+    box-shadow: 0 0 30px color-mix(in oklab, var(--primary) 40%, transparent);
+  }
+}
+
+@keyframes react-glow {
+  0% { 
+    background: var(--cyan);
+    box-shadow: 0 0 20px var(--cyan), 0 0 40px color-mix(in oklab, var(--cyan) 50%, transparent);
+  }
+  100% { 
+    background: var(--primary);
+    box-shadow: 0 0 25px var(--primary), 0 0 50px color-mix(in oklab, var(--primary) 60%, transparent);
+  }
+}
+
+/* Remove the old blob styles */
+.blob {
+  display: none;
+}
